@@ -10,17 +10,16 @@ class Solution {
             if(min==-1 || nums[i]<min){
                 min=nums[i];
             }
+            res.add(nums[i]);
         }
-        int num=min+1;
-        while(num!=max){
-            boolean isfound=false;
-            for(int i=0;i<nums.length;i++){
-                if(num==nums[i]){
-                    isfound=true;
-                    break;
-                }
+        int num=min;
+        while(num<=max){
+            if(res.isEmpty()){
+                return res;
             }
-            if(!isfound){
+            else if(res.contains(num)){
+                res.remove(res.indexOf(num));
+            }else{
                 res.add(num);
             }
             num++;
