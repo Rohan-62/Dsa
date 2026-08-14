@@ -12,7 +12,6 @@ class Solution {
         dfs(nums,idx+1,sum,target,li);
         li.add(nums[idx]);
         dfs(nums,idx,sum+nums[idx],target,li);
-       // dfs(nums,idx+1,sum+nums[idx],target,li);
         li.remove(li.size()-1);
         
     }
