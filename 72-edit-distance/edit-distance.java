@@ -13,7 +13,10 @@ class Solution {
         if(word1.charAt(idx1)==word2.charAt(idx2)){
             return 0+findmin(word1,word2,idx1+1,idx2+1,dp);
         }else{
-            return dp[idx1][idx2]= 1+Math.min(findmin(word1,word2,idx1,idx2+1,dp),Math.min(findmin(word1,word2,idx1+1,idx2,dp),findmin(word1,word2,idx1+1,idx2+1,dp)));
+            int insert=1+findmin(word1,word2,idx1,idx2+1,dp);
+            int delete=1+findmin(word1,word2,idx1+1,idx2,dp);
+            int replace=1+findmin(word1,word2,idx1+1,idx2+1,dp);
+            return dp[idx1][idx2]= Math.min(insert,Math.min(delete,replace));
         }
        
 
