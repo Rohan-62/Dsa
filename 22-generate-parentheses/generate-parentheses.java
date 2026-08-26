@@ -6,11 +6,12 @@ class Solution {
             return ;
         }
         if(close>open){
-            return;
+            return ;
         }
         
         if(open==n && close==n){
             res.add(sb.toString());
+            return ;
         }
         
         if(open<n){
@@ -30,6 +31,7 @@ class Solution {
     public List<String> generateParenthesis(int n) {
         StringBuilder sb=new StringBuilder("(");
         generatepara(n,sb,1,0);
+      
         return res;
     }
 }
