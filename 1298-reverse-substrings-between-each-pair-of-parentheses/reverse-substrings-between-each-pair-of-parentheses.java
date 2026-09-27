@@ -11,7 +11,6 @@ class Solution {
                 while(st.peek()!='('){
                     sb.append(st.pop());
                 }
-                System.out.println(sb.toString());
                 int j=0;
                 st.pop();
                 while(j<sb.length()){
