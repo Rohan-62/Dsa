@@ -27,7 +27,7 @@ class Solution {
     }
     return true;
 }
-    public void nqueens(List li,int n,int row,HashSet cols){
+    public void nqueens(List li,int n,int row){
             if(row==n){
                     res.add(new ArrayList(li));
                     return;
@@ -36,32 +36,26 @@ class Solution {
             String prev=new String(""+li.get(row-1));
             for(int i=0;i<n;i++){
                 if(i==0){
-                    if(!cols.contains(i) & issafe(li,row,i,n)){
-                        cols.add(i);
+                    if(issafe(li,row,i,n)){
                         sb.replace(i,i+1,"Q");
                         li.set(row,sb.toString());
-                        nqueens(li,n,row+1,cols);
-                        cols.remove(i);
+                        nqueens(li,n,row+1);
                         sb.replace(i,i+1,".");
                         li.set(row,sb.toString());
                     }
                 }else if(i==n-1){
-                    if(!cols.contains(i) && issafe(li,row,i,n)){
-                        cols.add(i);
+                    if(issafe(li,row,i,n)){
                         sb.replace(i,i+1,"Q");
                         li.set(row,sb.toString());
-                        nqueens(li,n,row+1,cols);
-                        cols.remove(i);
+                        nqueens(li,n,row+1);
                         sb.replace(i,i+1,".");
                         li.set(row,sb.toString());
                     }
                 }else{
-                    if(!cols.contains(i) && issafe(li,row,i,n)){
-                        cols.add(i);
+                    if(issafe(li,row,i,n)){
                         sb.replace(i,i+1,"Q");
                         li.set(row,sb.toString());
-                        nqueens(li,n,row+1,cols);
-                        cols.remove(i);
+                        nqueens(li,n,row+1);
                         sb.replace(i,i+1,".");
                         li.set(row,sb.toString());
                     }
@@ -73,7 +67,6 @@ class Solution {
     
     public List<List<String>> solveNQueens(int n) {
         List<String> li=new ArrayList<>();
-        HashSet<Integer> set=new HashSet<>();
         for(int i=0;i<n;i++){
             StringBuilder sb=new StringBuilder();
             for(int j=0;j<n;j++){
@@ -83,11 +76,9 @@ class Solution {
         }
         StringBuilder sb=new StringBuilder(""+li.get(0));
         for(int i=0;i<n;i++){
-            set.add(i);
             sb.replace(i,i+1,"Q");
             li.set(0,sb.toString());
-            nqueens(li,n,1,set);
-            set.remove(i);
+            nqueens(li,n,1);
             sb.replace(i,i+1,".");
             li.set(0,sb.toString());
         }
