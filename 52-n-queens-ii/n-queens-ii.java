@@ -26,32 +26,27 @@ class Solution {
             }
         return true;
     }
-    public void nqueens(int n,int[][]grid,HashSet set,int row){
+    public void nqueens(int n,int[][]grid,int row){
         if(row==n){
             res++;
             return;
         }
         for(int i=0;i<n;i++){
-            if(!set.contains(i) && isvalid(n,grid,row,i)){
-                set.add(i);
+            if(isvalid(n,grid,row,i)){
                 grid[row][i]=1;
-                nqueens(n,grid,set,row+1);
+                nqueens(n,grid,row+1);
                 grid[row][i]=0;
-                set.remove(i);
             }
         }
 
     }
     public int totalNQueens(int n) {
         int grid[][]=new int[n][n];
-        HashSet<Integer> set=new HashSet<>();
 
         for(int i=0;i<n;i++){
-            set.add(i);
             grid[0][i]=1;
-            nqueens(n,grid,set,1);
+            nqueens(n,grid,1);
             grid[0][i]=0;
-            set.remove(i);
         }
         return res;
     }
